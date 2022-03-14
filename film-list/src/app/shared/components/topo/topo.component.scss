@@ -1,0 +1,36 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+  box-shadow: 3px 0 6px rgba(0,0,0,.24);
+}
+
+.app-content {
+  min-height: calc(100vh - 110px);
+}
+
+.app-title {
+  text-transform: uppercase;
+  padding-left: 26px;
+}
+
+.header-toolbar {
+  justify-content: space-between;
+  background-color: #7a7a7a;
+}
+
+.capitani-red {
+  float: left;
+  height: 15px;
+  width: 50%;
+  background-color: #de473c;
+}
+
+.capitani-chocolate {
+  height: 15px;
+  width: 50%;
+  background-color: #fdd042;
+  float:right
+}

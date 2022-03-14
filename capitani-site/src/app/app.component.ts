@@ -225,5 +225,4 @@ export class AppComponent implements OnInit {
       delay: 0.8,
     });
   }
-
 }

@@ -3,8 +3,16 @@
 Projeto desenvolvido para demonstração de domínio do framework Angular.
 
 ## Funcionalidades
+- Listar Filmes cadastrados em um servidor
+- Filtrar por gênero e/ou palavra
+- cadastrar novo filme, atualizar filme, deletar filme.
 
+## Principais Stacks e Libs
+Angular, Typescript, CSS, SASS, SCSS, HTML
 
+- Angular Material
+- RxJS
+- NGX Infinite Scroll
 
 ## Simulando o Back-end
 

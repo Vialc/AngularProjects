@@ -24,20 +24,31 @@
     </ul>
   </header>
   <section class="first-section">
-    <img #imageLogo class="logo-header" src="../assets/images/logo escura.png" alt="Logo Capitani">
+    <img
+      #imageLogo
+      class="logo-header"
+      src="../assets/images/logo escura.png"
+      alt="Logo Capitani"
+    />
     <div class="info">
       <h1 class="heading-1">Consulting and Digital Sevice Provider</h1>
-      <p class="paragraph">
-        Uma nova ideia de fazer para o cliente
-      </p>
+      <p class="paragraph">Uma nova ideia de fazer para o cliente</p>
       <a class="btn btn--start">Saiba Mais</a>
     </div>
     <div class="visuals">
       <div class="image-container">
-        <img #imageFirst src="../assets/images/group-of-people-working-out-business-plan-in-an-office.jpg" alt="">
+        <img
+          #imageFirst
+          src="../assets/images/group-of-people-working-out-business-plan-in-an-office.jpg"
+          alt=""
+        />
       </div>
       <div class="image-container">
-        <img #imageSecond src="../assets/images/busy-employee-with-partner-background 2222.jpg" alt="">
+        <img
+          #imageSecond
+          src="../assets/images/busy-employee-with-partner-background 2222.jpg"
+          alt=""
+        />
       </div>
     </div>
   </section>
@@ -50,19 +61,19 @@
     </h1>
     <div class="info-1">
       <div class="info-1__text">
-        <span class="quote">
-          "
-        </span>
+        <span class="quote"> " </span>
         <h2 class="heading-3">
           Consultoria, planejamento, gestão, execução e acompanhamento...
         </h2>
         <p class="paragraph">
-          O Grupo vem entregando ao mercado soluções nas áreas de cloud computing, analytics, machine learning, engenharia de dados, Análises Preditivas, IA ,Robotização (RPA), Iot, Experiencia Usuario (UX) etc.
+          O Grupo vem entregando ao mercado soluções nas áreas de cloud
+          computing, analytics, machine learning, engenharia de dados, Análises
+          Preditivas, IA ,Robotização (RPA), Iot, Experiencia Usuario (UX) etc.
         </p>
         <a class="btn--learn"></a>
       </div>
       <div class="info-1__visual">
-        <img src="../assets/images/portrait3333.jpg" alt="">
+        <img src="../assets/images/portrait3333.jpg" alt="" />
       </div>
     </div>
   </section>
@@ -73,59 +84,45 @@
 
   <div class="services__container container grid">
     <div class="services__card">
-      <h3 class="services__title">Desenvolvedor
-        <br>FullStack SR</h3>
+      <h3 class="services__title">Desenvolvedor <br />FullStack SR</h3>
 
       <span class="services__button">
         Detalhes
-        <i class="bx bx-right-arrow-alt services__icon"></i>
+        <i
+          (click)="modalOpen()"
+          class="bx bx-right-arrow-alt services__icon"
+        ></i>
       </span>
-
-      <div class="services__modal">
+      <div>
+      <div
+           *ngIf="activeModal !== false"
+           [ngStyle]="{'visibility': 'visible'}"
+           class="services__modal">
         <div class="services__modal-content">
-          <i class="bx bx-x services__modal-close"></i>
+          <i (click)="modalClose()" class="bx bx-x services__modal-close"></i>
 
           <h3 class="services__modal-title">Desktop Development</h3>
           <p class="services__modal-description">
-            Sistemas de controle de horários, sistemas contábeis, controle de estoque, ou qualquer funcionalidade de automatização de processos internos.
+            Sistemas de controle de horários, sistemas contábeis, controle de
+            estoque, ou qualquer funcionalidade de automatização de processos
+            internos.
           </p>
 
           <ul class="services__modal-list">
-            <li class="services__modal-item">
+            <li *ngFor="let job of jobs" class="services__modal-item">
               <i class="bx bx-check services__modal-icon"></i>
               <p class="services__modal-info">
-                Sistemas totalmente customizados
-              </p>
-            </li>
-
-            <li class="services__modal-item">
-              <i class="bx bx-check services__modal-icon"></i>
-              <p class="services__modal-info">
-                Conexão com Banco de dados local ou na nuvem
-              </p>
-            </li>
-
-            <li class="services__modal-item">
-              <i class="bx bx-check services__modal-icon"></i>
-              <p class="services__modal-info">
-                Elaboração de Interfaces Amigáveis e funcionais
-              </p>
-            </li>
-
-            <li class="services__modal-item">
-              <i class="bx bx-check services__modal-icon"></i>
-              <p class="services__modal-info">
-                Sistemas robustos com alta performance
+                {{job.jobRequirement}}
               </p>
             </li>
           </ul>
         </div>
       </div>
+      </div>
     </div>
 
     <div class="services__card">
-      <h3 class="services__title">Desenvolvedor
-        <br>Frontend SR</h3>
+      <h3 class="services__title">Desenvolvedor <br />Frontend SR</h3>
 
       <span class="services__button">
         Detalhes
@@ -138,7 +135,9 @@
 
           <h3 class="services__modal-title">Web Development</h3>
           <p class="services__modal-description">
-            Sistemas de controle de horários, sistemas contábeis, controle de estoque, ou qualquer funcionalidade de automatização de processos internos.
+            Sistemas de controle de horários, sistemas contábeis, controle de
+            estoque, ou qualquer funcionalidade de automatização de processos
+            internos.
           </p>
 
           <ul class="services__modal-list">
@@ -175,8 +174,10 @@
     </div>
 
     <div class="services__card">
-      <h3 class="services__title">Desenvolvedor<br>
-        NodeJS PL</h3>
+      <h3 class="services__title">
+        Desenvolvedor<br />
+        NodeJS PL
+      </h3>
 
       <span class="services__button">
         Detalhes
@@ -189,7 +190,9 @@
 
           <h3 class="services__modal-title">MVC/ DDD Architeture</h3>
           <p class="services__modal-description">
-            Sistemas de controle de horários, sistemas contábeis, controle de estoque, ou qualquer funcionalidade de automatização de processos internos.
+            Sistemas de controle de horários, sistemas contábeis, controle de
+            estoque, ou qualquer funcionalidade de automatização de processos
+            internos.
           </p>
 
           <ul class="services__modal-list">
@@ -228,6 +231,9 @@
 </section>
 <footer class="footer">
   <div layout="row" layout-align="center center">
-    <img class="footer-logo" src="https://capitani.com.br/wp-content/uploads/2021/09/logo-branca.png">
+    <img
+      class="footer-logo"
+      src="https://capitani.com.br/wp-content/uploads/2021/09/logo-branca.png"
+    />
   </div>
 </footer>

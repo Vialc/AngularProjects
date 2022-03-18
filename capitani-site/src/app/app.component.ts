@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { JobsService } from './shared/services/jobs.service';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,12 +19,45 @@ export class AppComponent implements OnInit {
   @ViewChild('imageSecond', {static: true}) imageSecond!: ElementRef<HTMLDivElement>;
   @ViewChild('imageLogo', {static: true}) imageLogo!: ElementRef<HTMLDivElement>;
 
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  activeModal: boolean = false;
+  jobs = [
+    {
+      jobTitle: '',
+      jobRequirement: [],
+      jobDesirable: [],
+      jobLocation: ''
+    }
+  ];
+
+
+  constructor(@Inject(DOCUMENT) private document: Document, private jobsService: JobsService) {}
 
   ngOnInit(): void {
     this.initialAnimations();
     this.initScrollAnimations();
+    this.getJob();
   }
+
+  modalOpen() {
+    console.log(`Estava ${this.activeModal}`)
+
+      this.activeModal = true;
+      console.log(`Está ${this.activeModal}`)
+
+  }
+
+  modalClose() {
+    console.log(`close Estava ${this.activeModal}`)
+    this.activeModal = false;
+    console.log(`close Está ${this.activeModal}`)
+  }
+
+  getJob() {
+    this.jobsService.getJob().subscribe(job => {
+      this.jobs = job;
+    })
+  }
+
 
   initScrollAnimations(): void {
     gsap.to(this.imageLogo.nativeElement, {

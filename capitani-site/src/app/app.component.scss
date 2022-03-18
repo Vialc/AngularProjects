@@ -1,0 +1,18 @@
+/*Active modal*/
+.active-modal {
+  opacity: 1;
+  visibility: visible;
+}
+
+.services__modal {
+  position: fixed;
+  inset: 0;
+  background-color: #8a6a02;
+  padding: 2rem 1rem;
+  display: grid;
+  place-items: center;
+  visibility: hidden;
+  opacity: 1;
+  transition: 0.6s;
+  z-index: var(--z-modal);
+}

@@ -83,13 +83,13 @@
   <h2 class="section__title">DESTAQUE</h2>
 
   <div class="services__container container grid">
-    <div class="services__card">
-      <h3 class="services__title">Desenvolvedor <br />FullStack SR</h3>
+    <div *ngFor="let job of jobs" class="services__card">
+      <h3 class="services__title">{{job.jobTitle}}</h3>
 
       <span class="services__button">
         Detalhes
         <i
-          (click)="modalOpen()"
+          (click)="modalOpen(job.id)"
           class="bx bx-right-arrow-alt services__icon"
         ></i>
       </span>
@@ -98,133 +98,36 @@
            *ngIf="activeModal !== false"
            [ngStyle]="{'visibility': 'visible'}"
            class="services__modal">
-        <div class="services__modal-content">
+        <div *ngFor="let job of jobItem"  class="services__modal-content">
           <i (click)="modalClose()" class="bx bx-x services__modal-close"></i>
 
-          <h3 class="services__modal-title">Desktop Development</h3>
+          <h3 class="services__modal-title">{{job.jobTitle}}</h3>
           <p class="services__modal-description">
-            Sistemas de controle de horários, sistemas contábeis, controle de
-            estoque, ou qualquer funcionalidade de automatização de processos
-            internos.
+            Requisitos:
           </p>
-
           <ul class="services__modal-list">
-            <li *ngFor="let job of jobs" class="services__modal-item">
+            <li *ngFor="let requirement of job.jobRequirement" class="services__modal-item">
               <i class="bx bx-check services__modal-icon"></i>
               <p class="services__modal-info">
-                {{job.jobRequirement}}
+                {{requirement}}
               </p>
             </li>
           </ul>
-        </div>
-      </div>
-      </div>
-    </div>
 
-    <div class="services__card">
-      <h3 class="services__title">Desenvolvedor <br />Frontend SR</h3>
-
-      <span class="services__button">
-        Detalhes
-        <i class="bx bx-right-arrow-alt services__icon"></i>
-      </span>
-
-      <div class="services__modal">
-        <div class="services__modal-content">
-          <i class="bx bx-x services__modal-close"></i>
-
-          <h3 class="services__modal-title">Web Development</h3>
-          <p class="services__modal-description">
-            Sistemas de controle de horários, sistemas contábeis, controle de
-            estoque, ou qualquer funcionalidade de automatização de processos
-            internos.
+          <p *ngIf="job.jobDesirable.length > 0" class="services__modal-description">
+            Será um Diferencial se você tiver:
           </p>
-
           <ul class="services__modal-list">
-            <li class="services__modal-item">
+            <li *ngFor="let desirable of job.jobDesirable" class="services__modal-item">
               <i class="bx bx-check services__modal-icon"></i>
               <p class="services__modal-info">
-                Sistemas totalmente customizados
-              </p>
-            </li>
-
-            <li class="services__modal-item">
-              <i class="bx bx-check services__modal-icon"></i>
-              <p class="services__modal-info">
-                Conexão com Banco de dados local ou na nuvem
-              </p>
-            </li>
-
-            <li class="services__modal-item">
-              <i class="bx bx-check services__modal-icon"></i>
-              <p class="services__modal-info">
-                Elaboração de Interfaces Amigáveis e funcionais
-              </p>
-            </li>
-
-            <li class="services__modal-item">
-              <i class="bx bx-check services__modal-icon"></i>
-              <p class="services__modal-info">
-                Sistemas robustos com alta performance
+                {{desirable}}
               </p>
             </li>
           </ul>
+
         </div>
       </div>
-    </div>
-
-    <div class="services__card">
-      <h3 class="services__title">
-        Desenvolvedor<br />
-        NodeJS PL
-      </h3>
-
-      <span class="services__button">
-        Detalhes
-        <i class="bx bx-right-arrow-alt services__icon"></i>
-      </span>
-
-      <div class="services__modal">
-        <div class="services__modal-content">
-          <i class="bx bx-x services__modal-close"></i>
-
-          <h3 class="services__modal-title">MVC/ DDD Architeture</h3>
-          <p class="services__modal-description">
-            Sistemas de controle de horários, sistemas contábeis, controle de
-            estoque, ou qualquer funcionalidade de automatização de processos
-            internos.
-          </p>
-
-          <ul class="services__modal-list">
-            <li class="services__modal-item">
-              <i class="bx bx-check services__modal-icon"></i>
-              <p class="services__modal-info">
-                Sistemas totalmente customizados
-              </p>
-            </li>
-
-            <li class="services__modal-item">
-              <i class="bx bx-check services__modal-icon"></i>
-              <p class="services__modal-info">
-                Conexão com Banco de dados local ou na nuvem
-              </p>
-            </li>
-
-            <li class="services__modal-item">
-              <i class="bx bx-check services__modal-icon"></i>
-              <p class="services__modal-info">
-                Elaboração de Interfaces Amigáveis e funcionais
-              </p>
-            </li>
-
-            <li class="services__modal-item">
-              <i class="bx bx-check services__modal-icon"></i>
-              <p class="services__modal-info">
-                Sistemas robustos com alta performance
-              </p>
-            </li>
-          </ul>
-        </div>
       </div>
     </div>
   </div>

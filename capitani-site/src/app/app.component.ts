@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Jobs } from './models/jobs';
 import { JobsService } from './shared/services/jobs.service';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -20,15 +21,8 @@ export class AppComponent implements OnInit {
   @ViewChild('imageLogo', {static: true}) imageLogo!: ElementRef<HTMLDivElement>;
 
   activeModal: boolean = false;
-  jobs = [
-    {
-      jobTitle: '',
-      jobRequirement: [],
-      jobDesirable: [],
-      jobLocation: ''
-    }
-  ];
-
+  jobs: Array<Jobs> = [];
+  jobItem: Array<Jobs> = [] ;
 
   constructor(@Inject(DOCUMENT) private document: Document, private jobsService: JobsService) {}
 
@@ -38,18 +32,15 @@ export class AppComponent implements OnInit {
     this.getJob();
   }
 
-  modalOpen() {
-    console.log(`Estava ${this.activeModal}`)
-
+  modalOpen(id: number) {
+      this.jobs.find(j => j.id === id)
       this.activeModal = true;
-      console.log(`Está ${this.activeModal}`)
-
+      this.jobItem = this.jobs.filter(j => j.id === id)
+    return this.jobItem
   }
 
   modalClose() {
-    console.log(`close Estava ${this.activeModal}`)
     this.activeModal = false;
-    console.log(`close Está ${this.activeModal}`)
   }
 
   getJob() {
